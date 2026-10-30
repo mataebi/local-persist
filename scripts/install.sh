@@ -15,7 +15,12 @@ if [[ -n "$SCRIPT_PATH" && "$SCRIPT_PATH" != "bash" ]]; then
     thisGit=$(git -C "$gitDir" config --get remote.origin.url 2>/dev/null || true)
     if [[ -n "$thisGit" ]]; then
       thisGit=${thisGit%.git}
-      REPO=${thisGit#https://github.com/}
+      # Handle both https://github.com/OWNER/REPO and git@github.com:OWNER/REPO
+      case "$thisGit" in
+        git@github.com:*)  REPO=${thisGit#git@github.com:} ;;
+        https://github.com/*) REPO=${thisGit#https://github.com/} ;;
+        *)                 REPO="$thisGit" ;;
+      esac
     fi
   fi
 fi
