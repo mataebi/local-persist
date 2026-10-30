@@ -4,6 +4,8 @@
 
 Create named local volumes that persist in the location(s) you want!
 
+> See [ROADMAP.md](ROADMAP.md) for the improvement and maintenance plan.
+
 ## Why this plugin is still relevant
 
 The original project was archived in September 2025 with a note claiming it's "not really needed anymore" because the built-in `local` driver can do the same thing with `driver_opts`. That claim is **only partially true**, and it's exactly why this fork exists.
